@@ -1,12 +1,10 @@
 package com.sa.divinacomedia.app.controller;
 
 import com.sa.divinacomedia.app.entities.HairProduct;
-import com.sa.divinacomedia.app.entities.User;
 import com.sa.divinacomedia.app.services.HairProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 /**
