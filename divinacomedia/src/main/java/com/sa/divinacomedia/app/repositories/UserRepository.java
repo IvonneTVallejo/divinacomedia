@@ -14,7 +14,7 @@ public class UserRepository {
     private UserCrudRepository repository;
 
     public List<User> getAll(){
-        return (List<User>) repository.findAll();
+        return repository.findAll();
     }
 
     public Optional<User> getUserByName(String name){
@@ -40,4 +40,9 @@ public class UserRepository {
     public User save(User user){
         return repository.save(user);
     }
+
+    public void delete(Integer id){
+        repository.deleteById(id);
+    }
+
 }

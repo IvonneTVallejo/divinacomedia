@@ -17,19 +17,14 @@ public class UserService {
         return repository.getAll();
     }
 
-    public User save(User user){
-        if(user.getId()==null){
-            List<User> existUsers = repository.getUserByNameOrEmail(user.getName(), user.getEmail());
-            if(existUsers.isEmpty()){
-                return repository.save(user);
-            }else{
-                return user;
-            }
-        }else{
+    public User save(User user) {
+        if (user.getId() == null) {
+            return repository.save(user);
+        } else {
             Optional<User> existUser = repository.getUserById(user.getId());
-            if(existUser.isPresent()){
+            if (existUser.isPresent()) {
                 return user;
-            }else{
+            } else {
                 return repository.save(user);
             }
         }
@@ -44,7 +39,50 @@ public class UserService {
         if(user.isPresent()){
             return user.get();
         }else{
-            return new User(null, email, password, "NO DEFINIDO");
+            return new User();
         }
+    }
+
+
+
+    public User update(User user){
+        if (user.getId()!= null) {
+            Optional<User> existUser = repository.getUserById(user.getId());
+            if (existUser.isPresent()) {
+                if (user.getEmail()!= null) {
+                    existUser.get().setEmail(user.getEmail());
+                }
+                if (user.getAddress()!= null) {
+                    existUser.get().setAddress(user.getAddress());
+                }
+                if (user.getName()!= null) {
+                    existUser.get().setName(user.getName());
+                }
+                if (user.getIdentification()!= null) {
+                    existUser.get().setIdentification(user.getIdentification());
+                }
+                if (user.getCellPhone()!= null) {
+                    existUser.get().setCellPhone(user.getCellPhone());
+                }
+                if (user.getPassword()!= null) {
+                    existUser.get().setPassword(user.getPassword());
+                }
+                if (user.getZone()!= null) {
+                    existUser.get().setZone(user.getZone());
+                }
+                if (user.getType()!= null) {
+                    existUser.get().setType(user.getType());
+                }
+                return repository.save(existUser.get());
+            } else {
+                return user;
+            }
+        } else {
+            return user;
+        }
+    }
+
+    public void delete(Integer id){
+        repository.delete(id);
     }
 }

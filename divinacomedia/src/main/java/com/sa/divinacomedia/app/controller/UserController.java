@@ -18,9 +18,11 @@ public class UserController {
     private UserService service;
 
     @GetMapping("/all")
-    public List<User> getUsers(){return service.getAll();}
+    public List<User> getUsers() {
+        return service.getAll();
+    }
 
-    @GetMapping("/{email}")
+    @GetMapping("/emailexist/{email}")
     public boolean existEmail(@PathVariable("email") String email){
         return service.getUserByEmail(email);
     }
@@ -32,6 +34,16 @@ public class UserController {
     @GetMapping("/{email}/{password}")
     public User authUser(@PathVariable("email") String email, @PathVariable("password") String password){
         return service.getUserByEmailAndPassword(email, password);
+    }
+
+    @PutMapping("/update")
+    @ResponseStatus(HttpStatus.CREATED)
+    public User update(@RequestBody User user){return service.update(user);}
+
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void delete (@PathVariable("id") Integer id){
+        service.delete(id);
     }
 
 }
