@@ -3,16 +3,19 @@ package com.sa.divinacomedia.app.repositories.crud;
 
 import com.sa.divinacomedia.app.entities.User;
 import org.springframework.data.mongodb.repository.MongoRepository;
-import java.util.List;
 import java.util.Optional;
 
+/**
+ * @author Tatiana
+ */
 public interface UserCrudRepository extends MongoRepository<User, Integer> {
 
-    public Optional<User> findByName(String name);
+    Optional<User> findByEmail(String email);
 
-    public List<User> findByNameOrEmail(String name, String email);
+    Optional<User> findByEmailAndPassword(String email, String password);
 
-    public Optional<User> findByEmail(String email);
+    //Seleccionar el usuario con el ultimo id
+    Optional<User> findTopByOrderByIdDesc();
 
-    public Optional<User> findByEmailAndPassword(String email, String password);
+
 }

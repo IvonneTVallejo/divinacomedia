@@ -17,16 +17,8 @@ public class UserRepository {
         return repository.findAll();
     }
 
-    public Optional<User> getUserByName(String name){
-        return repository.findByName(name);
-    }
-
     public Optional<User> getUserByEmail(String email){
         return  repository.findByEmail(email);
-    }
-
-    public List<User> getUserByNameOrEmail(String name, String email){
-        return  repository.findByNameOrEmail(name, email);
     }
 
     public Optional<User> getUserByEmailAndPassword(String email, String password){

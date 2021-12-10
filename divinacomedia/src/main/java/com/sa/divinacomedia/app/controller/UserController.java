@@ -5,9 +5,11 @@ import com.sa.divinacomedia.app.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
+/**
+ * @author Tatiana
+ */
 @RestController
 @RequestMapping("user")
 @CrossOrigin(origins = "*") //habilita acceso desde cualquier origen
@@ -44,6 +46,11 @@ public class UserController {
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void delete (@PathVariable("id") Integer id){
         service.delete(id);
+    }
+
+    @GetMapping("/{id}")
+    public User getUser(@PathVariable("id") Integer id){
+        return service.getUserById(id);
     }
 
 }

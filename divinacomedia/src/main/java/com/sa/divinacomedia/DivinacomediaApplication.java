@@ -2,6 +2,7 @@ package com.sa.divinacomedia;
 
 import com.sa.divinacomedia.app.entities.HairProduct;
 import com.sa.divinacomedia.app.repositories.crud.HairProductCrudRepository;
+import com.sa.divinacomedia.app.repositories.crud.OrderCrudRepository;
 import com.sa.divinacomedia.app.repositories.crud.UserCrudRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -17,6 +18,8 @@ public class DivinacomediaApplication implements CommandLineRunner {
 	@Autowired
 	private UserCrudRepository userRepository;
 
+	@Autowired
+	private OrderCrudRepository orderRepository;
 
 	public static void main(String[] args) {
 		SpringApplication.run(DivinacomediaApplication.class, args);
@@ -27,5 +30,6 @@ public class DivinacomediaApplication implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 		productRepository.deleteAll();
 		userRepository.deleteAll();
+		orderRepository.deleteAll();
 	}
 }

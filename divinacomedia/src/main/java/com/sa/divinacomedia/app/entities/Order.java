@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import org.springframework.data.mongodb.core.mapping.Document;
 import javax.persistence.Id;
 import java.util.Date;
+import java.util.Map;
 
 /**
  * @author Tatiana
@@ -13,20 +14,15 @@ import java.util.Date;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Document(collection = "usuarios")
-public class User {
+@Document(collection = "orders")
+public class Order {
 
     @Id
     private Integer id;
-    private String identification;
-    private String name;
-    private Date birthtDay;
-    private String monthBirthtDay;
-    private String address;
-    private String cellPhone;
-    private String email;
-    private String password;
-    private String zone;
-    private String type;
+    private Date registerDay;
+    private String status;
+    private User salesMan;
+    private Map<String, HairProduct> products;
+    private Map<String, Integer> quantities;
 
 }

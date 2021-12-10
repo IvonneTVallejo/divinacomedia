@@ -34,6 +34,10 @@ public class UserService {
         return repository.getUserByEmail(email).isPresent();
     }
 
+    public User getUserById (Integer id) {
+        return repository.getUserById(id).orElse(new User());
+    }
+
     public User getUserByEmailAndPassword(String email, String password){
         Optional<User> user = repository.getUserByEmailAndPassword(email,password);
         if(user.isPresent()){
@@ -42,8 +46,6 @@ public class UserService {
             return new User();
         }
     }
-
-
 
     public User update(User user){
         if (user.getId()!= null) {

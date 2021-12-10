@@ -1,12 +1,9 @@
 package com.sa.divinacomedia.app.services;
 
 import com.sa.divinacomedia.app.entities.HairProduct;
-import com.sa.divinacomedia.app.entities.User;
 import com.sa.divinacomedia.app.repositories.HairProductRepository;
-import com.sa.divinacomedia.app.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.Optional;
 
@@ -35,7 +32,6 @@ public class HairProductService {
             }
         }
     }
-
 
     public HairProduct update(HairProduct product){
         if (product.getId()!= null) {
@@ -71,10 +67,12 @@ public class HairProductService {
         }
     }
 
-
-
-
     public void delete(String id){
         repository.delete(id);
+    }
+
+
+    public Optional<HairProduct> findById(String id){
+        return repository.getById(id);
     }
 }
