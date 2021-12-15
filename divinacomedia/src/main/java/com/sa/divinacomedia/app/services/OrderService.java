@@ -90,7 +90,7 @@ public class OrderService {
     }
 
     public List<Order> getByRegisterDayAndSalesManId(String registerDay,Integer id){
-        return repository.getByRegisterDayAndSalesManId(id, registerDay);
+        return repository.getByRegisterDayAndSalesManId(registerDay, id);
     }
 
 

@@ -52,7 +52,7 @@ public class OrderRepository {
         return repository.findBySalesManIdAndStatus(id, status);
     }
 
-    public List<Order> getByRegisterDayAndSalesManId(Integer id, String registerDay){
+    public List<Order> getByRegisterDayAndSalesManId(String registerDay, Integer id){
 
         try {
             return repository.findByRegisterDayAndSalesManId(new SimpleDateFormat("yyyy-MM-dd").parse(registerDay),id);
