@@ -5,6 +5,8 @@ import com.sa.divinacomedia.app.services.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -51,4 +53,18 @@ public class OrderController {
         return service.getOrderById(id);
     }
 
+    @GetMapping("/salesman/{id}")
+    public List<Order> getBySalesManId(@PathVariable("id") Integer id){
+        return service.getBySalesManId(id);
+    }
+
+    @GetMapping("/state/{status}/{id}")
+    public List<Order> getBySalesManIdAndStatus(@PathVariable("id") Integer id, @PathVariable("status") String status){
+        return service.getBySalesManIdAndStatus(id, status);
+    }
+
+    @GetMapping("/date/{registerDay}/{id}")
+    public List<Order> getByRegisterDayAndSalesManId( @PathVariable("registerDay") String registerday,@PathVariable("id") Integer id){
+        return service.getByRegisterDayAndSalesManId( registerday,id);
+    }
 }

@@ -5,6 +5,11 @@ import com.sa.divinacomedia.app.entities.User;
 import com.sa.divinacomedia.app.repositories.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -75,5 +80,18 @@ public class OrderService {
     public Order getOrderById (Integer id) {
         return repository.getOrder(id).orElse(new Order());
     }
+
+    public List<Order> getBySalesManId(Integer id){
+        return repository.getSalesManId(id);
+    }
+
+    public List<Order> getBySalesManIdAndStatus(Integer id, String status){
+        return repository.getBySalesManIdAndStatus(id,status);
+    }
+
+    public List<Order> getByRegisterDayAndSalesManId(String registerDay,Integer id){
+        return repository.getByRegisterDayAndSalesManId(id, registerDay);
+    }
+
 
 }

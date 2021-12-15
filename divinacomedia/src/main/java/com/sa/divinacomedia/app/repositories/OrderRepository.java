@@ -1,11 +1,13 @@
 package com.sa.divinacomedia.app.repositories;
 
 import com.sa.divinacomedia.app.entities.Order;
-import com.sa.divinacomedia.app.entities.User;
 import com.sa.divinacomedia.app.repositories.crud.OrderCrudRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.stereotype.Repository;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Optional;
 
@@ -42,4 +44,22 @@ public class OrderRepository {
     }
 
 
+    public List<Order> getSalesManId(Integer id){
+        return repository.findBySalesManId(id);
+    }
+
+    public List<Order> getBySalesManIdAndStatus(Integer id, String status){
+        return repository.findBySalesManIdAndStatus(id, status);
+    }
+
+    public List<Order> getByRegisterDayAndSalesManId(Integer id, String registerDay){
+
+        try {
+            return repository.findByRegisterDayAndSalesManId(new SimpleDateFormat("yyyy-MM-dd").parse(registerDay),id);
+        } catch (ParseException e) {
+            e.printStackTrace();
+            return null;
+        }
+
+    }
 }
