@@ -63,8 +63,8 @@ public class OrderController {
         return service.getBySalesManIdAndStatus(id, status);
     }
 
-    @GetMapping("/date/{registerDay}/{id}")
-    public List<Order> getByRegisterDayAndSalesManId( @PathVariable("registerDay") String registerday,@PathVariable("id") Integer id){
+    @GetMapping("/date/{registerday}/{id}")
+    public List<Order> getByRegisterDayAndSalesManId( @PathVariable("registerday") String registerday,@PathVariable("id") Integer id){
         return service.getByRegisterDayAndSalesManId( registerday,id);
     }
 }
