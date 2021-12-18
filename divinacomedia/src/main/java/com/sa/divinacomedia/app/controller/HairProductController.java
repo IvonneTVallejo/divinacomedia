@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
+import java.util.Locale;
 import java.util.Optional;
 
 /**
@@ -41,4 +42,15 @@ public class HairProductController {
     public Optional<HairProduct> getProductById(@PathVariable("id") String id){
         return service.findById(id);
     }
+
+    @GetMapping("/price/{price}")
+    public List<HairProduct> getByPrice(@PathVariable("price") Double price){
+        return service.findByPrice(price);
+    }
+
+    @GetMapping("/description/{description}")
+    public List<HairProduct> getByDescriptionContains(@PathVariable("description") String description){
+        return service.getByDescriptionContains(description);
+    }
+
 }

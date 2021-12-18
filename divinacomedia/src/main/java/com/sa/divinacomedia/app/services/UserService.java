@@ -4,6 +4,8 @@ import com.sa.divinacomedia.app.entities.User;
 import com.sa.divinacomedia.app.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.Optional;
 
@@ -86,5 +88,10 @@ public class UserService {
 
     public void delete(Integer id){
         repository.delete(id);
+    }
+
+
+    public List<User> getUserMonthBirthday(String month) {
+           return repository.getUserMonthBirthday(month);
     }
 }

@@ -75,4 +75,12 @@ public class HairProductService {
     public Optional<HairProduct> findById(String id){
         return repository.getById(id);
     }
+
+    public List<HairProduct> findByPrice(Double price){
+        return repository.getProductPrice(price);
+    }
+
+    public List<HairProduct> getByDescriptionContains(String description){
+            return repository.getByDescriptionContains(description);
+    }
 }

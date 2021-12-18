@@ -1,9 +1,12 @@
 package com.sa.divinacomedia.app.repositories;
 
+
 import com.sa.divinacomedia.app.entities.User;
 import com.sa.divinacomedia.app.repositories.crud.UserCrudRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Optional;
 
@@ -36,5 +39,10 @@ public class UserRepository {
     public void delete(Integer id){
         repository.deleteById(id);
     }
+
+    public List<User> getUserMonthBirthday(String month){
+        return repository.findByMonthBirthtDay(month);
+    }
+
 
 }
